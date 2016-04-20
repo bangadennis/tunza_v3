@@ -100,9 +100,14 @@ MANAGERS = ADMINS
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# DB credentials-to migarate
+DB_USER = "tunza"
+DB_PWD = "tunza"
+
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres:///tunza'),
+    'default': env.db("DATABASE_URL",
+                      default="postgres://" + DB_USER + ":" + DB_PWD + "@localhost:5432" + "/tunza_db"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
